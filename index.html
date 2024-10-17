@@ -32,19 +32,19 @@
         <div class="card-header mb-0">
           <h1 class="card-title fs-3">Movie Project - OOP - ES6</h1>
           <p class="mb-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            cum vero modi consequatur neque, nobis natus alias dicta laborum
-            illum iusto pariatur, voluptatibus iste.
+            Movie project I made using Prototype and ES6. Styled with Bootstrap.
+            Adding, removing and cleaning all movies is available.
           </p>
         </div>
         <div class="card-body border-bottom">
-          <form>
+          <form id="movieForm">
             <div class="row">
               <div class="col">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Movie Name"
+                  id="movieNameInput"
                 />
               </div>
               <div class="col">
@@ -52,6 +52,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Director"
+                  id="movieDirectorInput"
                 />
               </div>
             </div>
@@ -61,47 +62,38 @@
                   type="url"
                   class="form-control"
                   placeholder="Movie Banner Link"
+                  id="movieBannerInput"
                 />
               </div>
               <div class="col">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button
+                  id="addMovieButton"
+                  type="submit"
+                  class="btn btn-success"
+                >
+                  Add Movie
+                </button>
               </div>
             </div>
           </form>
         </div>
-        <div class="card-body border-bottom">
-          <div class="alert alert-success mb-0" role="alert">
-            A simple success alert—check it out!
-          </div>
-        </div>
+        <div id="alertArea" class="card-body border-bottom"></div>
         <div class="card-body">
           <h2 class="card-title fs-4">Movies</h2>
-          <table class="table mb-0">
-            <thead>
+          <table class="table table-bordered table-striped mb-0">
+            <thead class="table-dark">
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Movie Banner</th>
                 <th scope="col">Movie Name</th>
                 <th scope="col">Director</th>
-                <th scope="col"></th>
+                <th scope="col">#</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>
-                  <img
-                    style="max-width: 100px; border-radius: 0.5rem"
-                    src="/images/movie-banner.png"
-                    alt="The Fast and the Furious"
-                  />
-                </td>
-                <td>The Fast and the Furious</td>
-                <td>@zzistaken</td>
-                <td><i class="fa-solid fa-trash-can text-danger"></i></td>
-              </tr>
-            </tbody>
+            <tbody id="movieList"></tbody>
           </table>
+          <button id="clearMoviesButton" class="btn btn-danger mt-3">
+            Clear All Movies
+          </button>
         </div>
       </div>
     </div>
@@ -121,5 +113,10 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
+    <script src="ui.js"></script>
+    <script src="storage.js"></script>
+    <script src="movie.js"></script>
+    <script src="project.js"></script>
   </body>
 </html>
