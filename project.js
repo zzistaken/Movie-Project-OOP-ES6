@@ -4,19 +4,15 @@ const directorInput = document.getElementById("movieDirectorInput");
 const bannerInput = document.getElementById("movieBannerInput");
 const cardBody = document.querySelectorAll(".card-body")[2];
 const clearButton = document.getElementById("clearMoviesButton");
-//  UI Object
-const ui = new UI();
-// Storage Onject
-const storage = new Storage();
-// Load All Events
+
 eventListeners();
 
 function eventListeners() {
   form.addEventListener("submit", addMovie);
   document.addEventListener("DOMContentLoaded", function () {
-    let movies = storage.getMoviesFromStorage();
+    let movies = Storage.getMoviesFromStorage();
 
-    ui.loadAllMovies(movies);
+    UI.loadAllMovies(movies);
   });
   cardBody.addEventListener("click", deleteMovie);
   clearButton.addEventListener("click", clearMovies);
@@ -27,31 +23,29 @@ function addMovie(e) {
   const banner = bannerInput.value.trim();
 
   if (title === "" || director === "" || banner === "") {
-    // Error
-    ui.showAlert("Please fill in all fields in the form!", "danger");
+    UI.showAlert("Please fill in all fields in the form!", "danger");
   } else {
-    // New Movie
     const newMovie = new Movie(title, director, banner);
-    ui.addMovieToUi(newMovie);
-    storage.addMovieToStorage(newMovie);
-    ui.showAlert("New movie added to the list!", "success");
+    UI.addMovieToUi(newMovie);
+    Storage.addMovieToStorage(newMovie);
+    UI.showAlert("New movie added to the list!", "success");
   }
-  ui.clearInputs(titleInput, directorInput, bannerInput);
+  UI.clearInputs(titleInput, directorInput, bannerInput);
   e.preventDefault();
 }
 function deleteMovie(e) {
   if (e.target.id === "deleteMovieButton") {
-    ui.deleteMovieFromUi(e.target.parentElement.parentElement);
-    storage.deleteMovieFromStorage(
+    UI.deleteMovieFromUi(e.target.parentElement.parentElement);
+    Storage.deleteMovieFromStorage(
       e.target.parentElement.previousElementSibling.previousElementSibling.textContent.trim()
     );
-    ui.showAlert("Movie deleted from the list!", "success");
+    UI.showAlert("Movie deleted from the list!", "success");
   }
 }
 function clearMovies(e) {
   if (confirm("Are you sure you want to clear the whole list?")) {
-    ui.clearMoviesFromUi();
-    storage.clearMoviesFromStorage();
-    ui.showAlert("The movie list is cleared!", "success");
+    UI.clearMoviesFromUi();
+    Storage.clearMoviesFromStorage();
+    UI.showAlert("The movie list is cleared!", "success");
   }
 }
